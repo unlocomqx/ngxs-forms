@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { FormStateModel } from "./state/form.state";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector   : "app-root",
@@ -16,11 +15,11 @@ export class AppComponent {
 
   private setupForm () {
     this.accountForm = this.formBuilder.group({
-      firstname     : [""],
-      lastname      : [""],
-      email         : [""],
-      create_account: [false],
-      password      : [""],
+      firstname     : ["", [Validators.required]],
+      lastname      : ["", [Validators.required, Validators.minLength(5)]],
+      email         : ["", [Validators.required, Validators.email]],
+      create_account: [false, [Validators.requiredTrue]],
+      password      : ["", [Validators.minLength(8)]],
     });
   }
 }
