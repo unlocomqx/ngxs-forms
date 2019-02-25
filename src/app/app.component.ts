@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormStateModel } from "./state/form.state";
 
 @Component({
   selector   : "app-root",
@@ -7,11 +8,19 @@ import { FormBuilder } from "@angular/forms";
   styleUrls  : ["./app.component.scss"],
 })
 export class AppComponent {
-  pizzaForm = this.formBuilder.group({
-    toppings: ""
-  });
+  accountForm: FormGroup;
 
   constructor (private formBuilder: FormBuilder) {
+    this.setupForm();
+  }
 
+  private setupForm () {
+    this.accountForm = this.formBuilder.group({
+      firstname     : [""],
+      lastname      : [""],
+      email         : [""],
+      create_account: [false],
+      password      : [""],
+    });
   }
 }

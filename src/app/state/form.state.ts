@@ -10,15 +10,14 @@ export interface FormStateModel {
   };
 }
 
-@State<FormStateModel>({
+@State({
   name    : "forms",
   defaults: {
     accountForm: {
-      firstname     : "",
-      lastname      : "",
-      create_account: false,
-      email         : "",
-      password      : "",
+      model : undefined,
+      dirty : false,
+      status: "",
+      errors: {}
     }
   }
 })
