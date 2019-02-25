@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector   : "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls  : ["./app.component.scss"],
 })
 export class AppComponent {
-  title = 'ngxs-forms';
+  pizzaForm = this.formBuilder.group({
+    toppings: ""
+  });
+
+  constructor (private formBuilder: FormBuilder) {
+
+  }
 }
